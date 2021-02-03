@@ -1,0 +1,46 @@
+<!-- ejs-> Embeded javascript -->
+
+<%- include ('header') %>
+<div class="row">
+    <div class="col">
+        <h1><%=title%></h1>        
+    </div>
+    <div class="col">
+        <a href="/createCourse" class="btn btn-primary float-right">+ Add course</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% courses.forEach((course, index) => { %>
+                    <tr>
+                        <td><%=(index+1)%></td>
+                        <td>
+                            <img src="<%=course.photo%>" width="80px" />
+                        </td>
+                        <td><%=course.name%></td>
+                        <td><%=course.duration%> Hours</td>
+                        <td>
+                            <a href="/fetchCourse/<%=course._id%>" class="btn btn-primary btn-sm">Update</a>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>        
+    </div>
+</div>
+
+<%- include ('footer') %>
